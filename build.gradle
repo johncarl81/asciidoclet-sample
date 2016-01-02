@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies { 
-        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:0.1.11' 
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:0.1.11'
     }
 }
 
@@ -30,10 +30,9 @@ repositories {
 }
 
 dependencies {
-    asciidoclet 'org.asciidoctor:asciidoclet:1.+'
-    gems 'rubygems:asciidoctor-diagram:1.+'
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.3-SNAPSHOT'
+    asciidoclet 'org.asciidoctor:asciidoctorj-diagram:1.3.1'
 }
-
 
 javadoc {
     dependsOn jrubyPrepareGems
@@ -43,8 +42,8 @@ javadoc {
     options.addStringOption "-base-dir", "${projectDir}"
     options.addStringOption "encoding", "UTF-8"
     options.addStringOption "-attributes-file", "${projectDir}/config/javadoc-attributes.adoc"
-    options.addStringOption "-require", "asciidoctor-diagram"
-    options.addStringOption "-gem-path", "${jrubyPrepareGems.outputDir}"
+    options.addStringOption "r", "asciidoctor-diagram"
+    options.addStringOption "-gem-path", "build/vendor"
     options.addStringOption "encoding","UTF-8"
     options.addStringOption "charset","UTF-8"
     options.addStringOption "-attribute",  "data-uri," +
